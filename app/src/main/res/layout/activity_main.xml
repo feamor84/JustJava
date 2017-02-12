@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    style="@style/activity_main"
+    tools:context="pl.bartekpawlowski.justjava.MainActivity">
+
+    <TextView
+        android:id="@+id/heading_quantity"
+        style="@style/text_views.heading.quantity" />
+
+    <LinearLayout
+        android:id="@+id/wrapper_quantity"
+        style="@style/quantity_wrapper">
+
+        <Button
+            android:id="@+id/button_decrement"
+            style="@style/button.small.decrement"
+            android:onClick="decrementQuantity" />
+
+        <TextView
+            android:id="@+id/quantity"
+            style="@style/text_views.quantity"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/button_increment"
+            style="@style/button.small.increment"
+            android:onClick="incrementQuantity" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/heading_price"
+        style="@style/text_views.heading.price" />
+
+    <TextView
+        android:id="@+id/price"
+        style="@style/text_views.quantity"
+        android:text="@string/price" />
+
+    <Button
+        android:id="@+id/button"
+        style="@style/button.order"
+        android:onClick="submitOrder" />
+
+</LinearLayout>

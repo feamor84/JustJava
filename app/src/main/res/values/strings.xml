@@ -5,4 +5,8 @@
     <string name="quantity" translatable="false">0</string>
     <string name="order">order</string>
     <string name="price">$0</string>
+    <string name="coffee_single">coffee</string>
+    <string name="coffree_plural">coffees</string>
+    <string name="total">Total</string>
+    <string name="for_sentence">for</string>
 </resources>

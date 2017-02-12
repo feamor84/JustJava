@@ -6,4 +6,8 @@
     <string name="order">Zamów</string>
     <string name="quantity"></string>
     <string name="price">0,00 zł</string>
+    <string name="coffee_single">kawę</string>
+    <string name="coffree_plural">kawy</string>
+    <string name="total">Podsumowanie</string>
+    <string name="for_sentence">za</string>
 </resources>

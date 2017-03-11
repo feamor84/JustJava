@@ -1,12 +1,7 @@
 <resources>
     <string name="app_name">Just Java</string>
     <string name="heading_quantity">Quantity</string>
-    <string name="heading_price">Price</string>
-    <string name="quantity" translatable="false">0</string>
-    <string name="order">order</string>
-    <string name="price">$0</string>
-    <string name="coffee_single">coffee</string>
-    <string name="coffree_plural">coffees</string>
-    <string name="total">Total</string>
-    <string name="for_sentence">for</string>
+    <string name="heading_order_summary">Order Summary</string>
+    <string name="order">Order</string>
+    <string name="_0" translatable="false">0</string>
 </resources>

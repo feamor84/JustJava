@@ -1,13 +1,13 @@
 package pl.bartekpawlowski.justjava;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
-
-import static android.R.id.message;
 
 /**
  * This app displays an order form to order coffee.
@@ -17,52 +17,72 @@ public class MainActivity extends AppCompatActivity {
     private int numberOfCoffees = 0;
     private int priceOfCoffee = 5;
 
+    // Views
+    private TextView quantityView;
+    private TextView orderSummaryView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
-        display(this.numberOfCoffees);
-        displayPrice(this.numberOfCoffees);
+
+        quantityView = (TextView) findViewById(R.id.quantity);
+        orderSummaryView = (TextView) findViewById(R.id.order_summary_text_view);
+
     }
 
     /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        displayPrice(this.numberOfCoffees);
+        int price = calculatePrice();
+        orderSummaryView.setText(createOrderSummary(price));
         }
 
     public void decrementQuantity(View view) {
         this.numberOfCoffees--;
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity);
-        quantityTextView.setText("" + this.numberOfCoffees);
+        quantityView.setText("" + numberOfCoffees);
     }
 
     public void incrementQuantity(View view) {
         this.numberOfCoffees++;
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity);
-        quantityTextView.setText("" + this.numberOfCoffees);
+        quantityView.setText("" + numberOfCoffees);
     }
 
     /**
      * This method displays the given quantity value on the screen.
      */
     private void display(int numberOfOrders) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity);
-        quantityTextView.setText("" + numberOfOrders);
+        quantityView.setText("" + numberOfOrders);
     }
 
     /**
-     * This method displays the given price on the screen.
+     * This method calculate price of the order
      */
-    private void displayPrice(int price) {
-        String coffeEndWord = getString(R.string.coffee_single);
-        price *= this.priceOfCoffee;
 
-        if(this.numberOfCoffees > 1) {
-            coffeEndWord = getString(R.string.coffree_plural);
-        }
-        TextView priceTextView = (TextView) findViewById(R.id.price);
-        priceTextView.setText(getString(R.string.total) + ": " + NumberFormat.getCurrencyInstance().format(price) + " " + getString(R.string.for_sentence) + " " + this.numberOfCoffees + " " + coffeEndWord);
+    private int calculatePrice() {
+        return numberOfCoffees * priceOfCoffee;
+    }
+
+    /**
+     * This method return localized price.
+     */
+    private String formatPrice(int price) {
+        String formatedPrice = NumberFormat.getCurrencyInstance().format(price);
+
+        return formatedPrice;
+    }
+
+    private String createOrderSummary(int finalPrice) {
+
+        String localizedPrice = formatPrice(finalPrice);
+        String name = "Bartek Pawlowski";
+        String thanks = "Thank You!";
+
+        String message = "Name: " + name + "\nQuantity: " + numberOfCoffees + "\nTotal: " + localizedPrice + "\n" + thanks;
+
+        return message;
+
     }
 }

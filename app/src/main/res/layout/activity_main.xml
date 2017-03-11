@@ -7,7 +7,8 @@
 
     <TextView
         android:id="@+id/heading_quantity"
-        style="@style/text_views.heading.quantity" />
+        style="@style/text_views.heading"
+        android:text="@string/heading_quantity"/>
 
     <LinearLayout
         android:id="@+id/wrapper_quantity"
@@ -20,7 +21,8 @@
 
         <TextView
             android:id="@+id/quantity"
-            style="@style/text_views.quantity" />
+            style="@style/text_views.quantity"
+            android:text="@string/_0"/>
 
         <Button
             android:id="@+id/button_increment"
@@ -31,15 +33,17 @@
 
     <TextView
         android:id="@+id/heading_price"
-        style="@style/text_views.heading.price" />
+        style="@style/text_views.heading"
+        android:text="@string/heading_order_summary"/>
 
     <TextView
-        android:id="@+id/price"
+        android:id="@+id/order_summary_text_view"
         style="@style/text_views.quantity" />
 
     <Button
         android:id="@+id/button"
-        style="@style/button.order"
-        android:onClick="submitOrder" />
+        style="@style/button"
+        android:onClick="submitOrder"
+        android:text="@string/order"/>
 
 </LinearLayout>

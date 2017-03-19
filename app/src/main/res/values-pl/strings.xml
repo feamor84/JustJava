@@ -4,4 +4,10 @@
     <string name="heading_quantity">Ilość</string>
     <string name="heading_order_summary">Podsumowanie zamówienia</string>
     <string name="order">Zamów</string>
+    <string name="name">Imię i nazwisko: Bartłomiej Pawłowski</string>
+    <string name="thanks">Dziękuje!</string>
+    <string name="quantity">Ilość: </string>
+    <string name="total">Suma: </string>
+    <string name="toppings">Dodatki</string>
+    <string name="whipped_cream">Bita śmietana</string>
 </resources>

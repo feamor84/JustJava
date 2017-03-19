@@ -3,6 +3,7 @@ package pl.bartekpawlowski.justjava;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,10 +78,14 @@ public class MainActivity extends AppCompatActivity {
     private String createOrderSummary(int finalPrice) {
 
         String localizedPrice = formatPrice(finalPrice);
-        String name = "Bartek Pawlowski";
-        String thanks = "Thank You!";
+        String name = getResources().getString(R.string.name);
+        String thanks = getResources().getString(R.string.thanks);
+        String quantity = getResources().getString(R.string.quantity);
+        String total = getResources().getString(R.string.total);
 
-        String message = "Name: " + name + "\nQuantity: " + numberOfCoffees + "\nTotal: " + localizedPrice + "\n" + thanks;
+        String message = name + "\n" + quantity + numberOfCoffees + "\n" + total + localizedPrice + "\n" + thanks;
+
+        Log.i("Podsumowanie zamówieani", message);
 
         return message;
 

@@ -6,17 +6,31 @@
     tools:context="pl.bartekpawlowski.justjava.MainActivity">
 
     <TextView
-        android:id="@+id/heading_quantity"
+        style="@style/text_views.heading"
+        android:text="@string/toppings"/>
+    <LinearLayout
+        style="@style/linear_layout_wrapper">
+
+        <CheckBox
+            android:id="@+id/checkbox_whipped_cream"
+            style="@style/checkbox"/>
+
+        <TextView
+            style="@style/checkbox.label"
+            android:text="@string/whipped_cream"/>
+    </LinearLayout>
+
+    <TextView
         style="@style/text_views.heading"
         android:text="@string/heading_quantity"/>
 
     <LinearLayout
-        android:id="@+id/wrapper_quantity"
-        style="@style/quantity_wrapper">
+        style="@style/linear_layout_wrapper">
 
         <Button
             android:id="@+id/button_decrement"
-            style="@style/button.small.decrement"
+            style="@style/button_small.decrement"
+            android:text="@string/minus"
             android:onClick="decrementQuantity" />
 
         <TextView
@@ -26,13 +40,13 @@
 
         <Button
             android:id="@+id/button_increment"
-            style="@style/button.small.increment"
+            style="@style/button_small.increment"
+            android:text="@string/plus"
             android:onClick="incrementQuantity" />
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/heading_price"
         style="@style/text_views.heading"
         android:text="@string/heading_order_summary"/>
 
@@ -41,7 +55,7 @@
         style="@style/text_views.quantity" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_submit"
         style="@style/button"
         android:onClick="submitOrder"
         android:text="@string/order"/>

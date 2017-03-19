@@ -6,4 +6,7 @@
     <dimen name="default_text_size">16sp</dimen>
 
     <dimen name="quantity_picker_margin">8dp</dimen>
+
+    <dimen name="checkbox_space">24dp</dimen>
+    <dimen name="checkbox_label">16sp</dimen>
 </resources>

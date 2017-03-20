@@ -1,63 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
-    style="@style/activity_main"
-    tools:context="pl.bartekpawlowski.justjava.MainActivity">
+    tools:context="pl.bartekpawlowski.justjava.MainActivity"
+    style="@style/scroll_view">
 
-    <TextView
-        style="@style/text_views.heading"
-        android:text="@string/toppings"/>
     <LinearLayout
-        style="@style/linear_layout_wrapper">
+        style="@style/activity_main">
+
+        <EditText
+            android:id="@+id/enter_name"
+            style="@style/enter_name"
+            android:hint="@string/name_hint"/>
+
+        <TextView
+            style="@style/text_views.heading"
+            android:text="@string/toppings"/>
 
         <CheckBox
-            android:id="@+id/checkbox_whipped_cream"
-            style="@style/checkbox"/>
-
-        <TextView
-            style="@style/checkbox.label"
+            android:id="@+id/toppings_whipped_cream"
+            style="@style/checkbox"
             android:text="@string/whipped_cream"/>
-    </LinearLayout>
 
-    <TextView
-        style="@style/text_views.heading"
-        android:text="@string/heading_quantity"/>
-
-    <LinearLayout
-        style="@style/linear_layout_wrapper">
-
-        <Button
-            android:id="@+id/button_decrement"
-            style="@style/button_small.decrement"
-            android:text="@string/minus"
-            android:onClick="decrementQuantity" />
+        <CheckBox
+            android:id="@+id/toppings_chocolate"
+            style="@style/checkbox"
+            android:text="@string/chocolate"/>
 
         <TextView
-            android:id="@+id/quantity"
-            style="@style/text_views.quantity"
-            android:text="@string/_0"/>
+            style="@style/text_views.heading"
+            android:text="@string/heading_quantity"/>
+
+        <LinearLayout
+            style="@style/linear_layout_wrapper">
+
+            <Button
+                android:id="@+id/button_decrement"
+                style="@style/button_small.decrement"
+                android:text="@string/minus"
+                android:onClick="decrementQuantity" />
+
+            <TextView
+                android:id="@+id/quantity"
+                style="@style/text_views.quantity"
+                android:text="@string/_0"/>
+
+            <Button
+                android:id="@+id/button_increment"
+                style="@style/button_small.increment"
+                android:text="@string/plus"
+                android:onClick="incrementQuantity" />
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/text_views.heading"
+            android:text="@string/heading_order_summary"/>
+
+        <TextView
+            android:id="@+id/order_summary_text_view"
+            style="@style/text_views.quantity" />
 
         <Button
-            android:id="@+id/button_increment"
-            style="@style/button_small.increment"
-            android:text="@string/plus"
-            android:onClick="incrementQuantity" />
+            style="@style/button"
+            android:onClick="submitOrder"
+            android:text="@string/order"/>
 
     </LinearLayout>
 
-    <TextView
-        style="@style/text_views.heading"
-        android:text="@string/heading_order_summary"/>
-
-    <TextView
-        android:id="@+id/order_summary_text_view"
-        style="@style/text_views.quantity" />
-
-    <Button
-        android:id="@+id/button_submit"
-        style="@style/button"
-        android:onClick="submitOrder"
-        android:text="@string/order"/>
-
-</LinearLayout>
+</ScrollView>

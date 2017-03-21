@@ -52,14 +52,6 @@
 
         </LinearLayout>
 
-        <TextView
-            style="@style/text_views.heading"
-            android:text="@string/heading_order_summary"/>
-
-        <TextView
-            android:id="@+id/order_summary_text_view"
-            style="@style/text_views.quantity" />
-
         <Button
             style="@style/button"
             android:onClick="submitOrder"

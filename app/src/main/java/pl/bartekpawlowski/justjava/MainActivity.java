@@ -1,9 +1,16 @@
 package pl.bartekpawlowski.justjava;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.AlignmentSpan;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -40,11 +47,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         quantityView = (TextView) findViewById(R.id.quantity);
-        orderSummaryView = (TextView) findViewById(R.id.order_summary_text_view);
         toppingsCreamCheckBox = (CheckBox) findViewById(R.id.toppings_whipped_cream);
         toppingsChocolate = (CheckBox) findViewById(R.id.toppings_chocolate);
         enterName = (EditText) findViewById(R.id.enter_name);
 
+        numberOfCoffees = 1;
+        quantityView.setText("" + numberOfCoffees);
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+
+
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     /**
@@ -52,16 +68,23 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         int price = calculatePrice();
-        orderSummaryView.setText(createOrderSummary(price));
+        String message = createOrderSummary(price);
+        String subject = getResources().getString(R.string.subject, getEditName());
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        if(intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
         }
 
     public void decrementQuantity(View view) {
         numberOfCoffees--;
         if(numberOfCoffees < 1) {
             numberOfCoffees = 1;
-            Toast warning = new Toast(getApplicationContext());
-            warning.setDuration(Toast.LENGTH_SHORT);
-            warning.show();
+            makeCenteredToast(getResources().getString(R.string.toast_too_few));
             quantityView.setText("" + numberOfCoffees);
         } else {
             quantityView.setText("" + numberOfCoffees);
@@ -70,8 +93,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void incrementQuantity(View view) {
         numberOfCoffees++;
-        quantityView.setText("" + numberOfCoffees);
+        if(numberOfCoffees > 100) {
+            numberOfCoffees = 100;
+            makeCenteredToast(getResources().getString(R.string.toast_too_many));
+            quantityView.setText("" + numberOfCoffees);
+        } else {
+            quantityView.setText("" + numberOfCoffees);
+        }
     }
+
+    /**
+    * This method creates Toast with centered text
+     **/
+    private void makeCenteredToast(String text){
+        Spannable centeredText = new SpannableString(text);
+        centeredText.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER), 0, text.length() - 1, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+        Toast.makeText(getApplicationContext(), centeredText, Toast.LENGTH_SHORT).show();
+    }
+
 
     /**
      * This method displays the given quantity value on the screen.
@@ -155,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
     private String createOrderSummary(int finalPrice) {
 
         String localizedPrice = formatPrice(finalPrice);
-        String name = getResources().getString(R.string.name) + getEditName();
+        String name = getResources().getString(R.string.name, getEditName());
         String thanks = getResources().getString(R.string.thanks);
         String quantity = getResources().getString(R.string.quantity);
         String total = getResources().getString(R.string.total);

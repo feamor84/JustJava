@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Tylko Java</string>
     <string name="heading_quantity">Ilość</string>
-    <string name="heading_order_summary">Podsumowanie zamówienia</string>
     <string name="order">Zamów</string>
     <string name="thanks">Dziękuje!</string>
     <string name="quantity">Ilość: </string>
-    <string name="name">Imię: </string>
+    <string name="name">Imię: <xliff:g id="name" example="Amy">%s</xliff:g></string>
     <string name="total">Suma: </string>
     <string name="toppings">Dodatki</string>
     <string name="whipped_cream">Bita śmietana</string>
@@ -15,4 +14,7 @@
     <string name="chocolate">Czekolada</string>
     <string name="add_chocolate">Dodać czekoladę?</string>
     <string name="name_hint">Imię</string>
+    <string name="toast_too_few">Za małe zamówienie! Min. zamówienie to 1 kawa</string>
+    <string name="toast_too_many">Za duże zamówienie! Max. zamówienie to 100 kaw</string>
+    <string name="subject">Zamówienie z programu JustJava dla <xliff:g id="name" example="Amy">%s</xliff:g></string>
 </resources>
